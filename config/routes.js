@@ -46,17 +46,17 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  'GET /blogs' : {
+  'GET /posts' : {
     controller : 'BlogController',
     action : 'list'
   },
 
-  'POST /blog' : {
+  'POST /post' : {
     controller : 'BlogController',
     action : 'create'
   },
 
-  'DELETE /blogs' : {
+  'DELETE /posts' : {
     controller : 'BlogController',
     action : 'deleteAll'
   }
