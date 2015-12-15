@@ -7,25 +7,22 @@
 
 module.exports = {
   list: function (req, res) {
-    // Getting params
-    var page = (req.param('page') && !isNaN(req.param('page'))) ? req.param('page') : 1;
-    var limit = (req.param('limit') && !isNaN(req.param('limit'))) ? req.param('limit') : 20;
-    var sortby = req.param('sortby') || 'createdAt';
-    var sortdir = (req.param('sortdir')
-    && ['ASC', 'DESC'].indexOf(req.param('sortdir').toUpperCase()) !== -1) ? req.param('sortdir').toUpperCase() : 'ASC';
+    //// Getting params
+    //var page = (req.param('page') && !isNaN(req.param('page'))) ? req.param('page') : 1;
+    //var limit = (req.param('limit') && !isNaN(req.param('limit'))) ? req.param('limit') : 20;
+    //var sortby = req.param('sortby') || 'createdAt';
+    //var sortdir = (req.param('sortdir')
+    //&& ['ASC', 'DESC'].indexOf(req.param('sortdir').toUpperCase()) !== -1) ? req.param('sortdir').toUpperCase() : 'ASC';
 
-    Blog.count({}, (err, count) => {
-      Blog.find({limit: 20, skip: (page - 1) * limit}, (err, blogs) => {
+    //Blog.count({}, (err, count) => {
+      Blog.find({}, (err, blogs) => {
         if (err) {
           res.badRequest(err);
           return;
         }
-        res.json({
-          count : count,
-          blogs : blogs
-        });
-      })
-    });
+        res.json(blogs);
+      });
+    //});
   },
   create: function (req, res) {
     var blog = _.pick(req.body,['title','text']);
